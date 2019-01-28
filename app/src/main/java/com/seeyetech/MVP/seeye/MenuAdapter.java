@@ -2,6 +2,10 @@ package com.seeyetech.MVP.seeye;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,9 +67,11 @@ class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+        //Deprecated
         Intent intent = new Intent(context, ChairActivity.class);
         intent.putExtra("category_name", mTitle.getText());
-        context.startActivity(intent);
+
+        ((AppCompatActivity)context).startActivity(intent);
     }
 }
 

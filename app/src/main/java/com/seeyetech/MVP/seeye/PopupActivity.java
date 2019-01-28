@@ -50,7 +50,7 @@ public class PopupActivity extends Activity {
         Intent intent = getIntent();
         String str = intent.getStringExtra("name");
         if(str != null) {
-            int id = ChairActivity.typeMap.get(str);
+            int id = Constants.typeMap.get(str);
             ImageView imageView = (ImageView) findViewById(R.id.imageView);
             imageView.setImageResource(id);
         }

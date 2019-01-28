@@ -4,8 +4,10 @@ package com.seeyetech.MVP.seeye;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,5 +70,24 @@ public class MenuFragment extends Fragment {
         MenuAdapter myAdapter = new MenuAdapter(getActivity(), mCatList);
         mRecyclerView.setAdapter(myAdapter);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("SEEYE CATEGORY");
+        Log.v("MenuFrag", "resume");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.v("MenuFrag", "DESTROY");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("SEEYE CATEGORY");
     }
 }
