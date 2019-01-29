@@ -39,26 +39,33 @@ public class ChairActivity extends AppCompatActivity {
 
         setUpPinButton();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpPinButton();
 
     }
 
-
     void setUpPinButton() {
         FloatingActionButton floatingButton = (FloatingActionButton) findViewById(R.id.fab);
-        floatingButton.setAlpha(0.65f);
+//        floatingButton.setAlpha(0.65f);
         MyProperties instance = MyProperties.getInstance();
         if(!instance.isPinSet) {
             instance.isPinSet = true;
             instance.pinX = floatingButton.getX();
             instance.pinY = floatingButton.getY();
-            Toast.makeText(this, "Pin set", Toast.LENGTH_SHORT);
-            Log.v("Pin button", "first time set");
+            Log.v("First time pin", instance.pinX + " " + instance.pinY );
         }
         else {
-            TranslateAnimation animation = new TranslateAnimation(0, 0, instance.pinX, instance.pinY);
-            animation.setDuration(0); // duartion in ms
-            animation.setFillAfter(false);
-            floatingButton.startAnimation(animation);
+//            TranslateAnimation animation = new TranslateAnimation(0, 0, instance.pinX, instance.pinY);
+//            animation.setDuration(0); // duartion in ms
+//            animation.setFillAfter(false);
+//            floatingButton.startAnimation(animation);
+            floatingButton.setX(instance.pinX);
+            floatingButton.setY(instance.pinY);
+            Log.v("Continuing time pin", instance.pinX + " " + instance.pinY );
         }
         floatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
