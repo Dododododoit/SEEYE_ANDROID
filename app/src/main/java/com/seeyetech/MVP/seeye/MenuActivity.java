@@ -35,23 +35,15 @@ public class MenuActivity extends AppCompatActivity {
 
     void setUpPinButton() {
         FloatingActionButton floatingButton = (FloatingActionButton) findViewById(R.id.fab);
-//        floatingButton.setAlpha(0.65f);
         MyProperties instance = MyProperties.getInstance();
         if(!instance.isPinSet) {
             instance.isPinSet = true;
             instance.pinX = floatingButton.getX();
             instance.pinY = floatingButton.getY();
-            Log.v("First time pin", instance.pinX + " " + instance.pinY );
-//            Toast.makeText(this, "Pin set", Toast.LENGTH_SHORT);
         }
         else {
-//            TranslateAnimation animation = new TranslateAnimation(0, 0, instance.pinX, instance.pinY);
-//            animation.setDuration(0); // duartion in ms
-//            animation.setFillAfter(false);
-//            floatingButton.startAnimation(animation);
             floatingButton.setX(instance.pinX);
             floatingButton.setY(instance.pinY);
-            Log.v("Continuing time pin", instance.pinX + " " + instance.pinY );
         }
         floatingButton.setOnClickListener(new View.OnClickListener() {
             @Override

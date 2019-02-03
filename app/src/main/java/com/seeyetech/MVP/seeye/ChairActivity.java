@@ -39,6 +39,7 @@ public class ChairActivity extends AppCompatActivity {
 
         setUpPinButton();
 
+
     }
 
     @Override
@@ -56,7 +57,7 @@ public class ChairActivity extends AppCompatActivity {
             instance.isPinSet = true;
             instance.pinX = floatingButton.getX();
             instance.pinY = floatingButton.getY();
-            Log.v("First time pin", instance.pinX + " " + instance.pinY );
+            //Log.v("First time pin", instance.pinX + " " + instance.pinY );
         }
         else {
 //            TranslateAnimation animation = new TranslateAnimation(0, 0, instance.pinX, instance.pinY);
@@ -65,7 +66,7 @@ public class ChairActivity extends AppCompatActivity {
 //            floatingButton.startAnimation(animation);
             floatingButton.setX(instance.pinX);
             floatingButton.setY(instance.pinY);
-            Log.v("Continuing time pin", instance.pinX + " " + instance.pinY );
+            //Log.v("Continuing time pin", instance.pinX + " " + instance.pinY );
         }
         floatingButton.setOnClickListener(new View.OnClickListener() {
             @Override

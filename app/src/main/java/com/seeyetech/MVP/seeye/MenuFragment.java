@@ -51,21 +51,32 @@ public class MenuFragment extends Fragment {
         mCatData = new CategoryData("Chair", "",
                 R.drawable.chair);
         mCatList.add(mCatData);
-        mCatData = new CategoryData("Bed", "",
-                R.drawable.beds);
-        mCatList.add(mCatData);
-        mCatData = new CategoryData("Table", "",
-                R.drawable.tables);
-        mCatList.add(mCatData);
-        mCatData = new CategoryData("Sofa", "",
-                R.drawable.sofa);
-        mCatList.add(mCatData);
+//        mCatData = new CategoryData("Bed", "",
+//                R.drawable.beds);
+//        mCatList.add(mCatData);
         mCatData = new CategoryData("Carbinet", "",
                 R.drawable.cabinet);
         mCatList.add(mCatData);
-        mCatData = new CategoryData("Others", "",
-                R.drawable.sofa);
+
+        mCatData = new CategoryData("Table", "",
+                R.drawable.tables);
         mCatList.add(mCatData);
+//        mCatData = new CategoryData("Sofa", "",
+//                R.drawable.sofa);
+//        mCatList.add(mCatData);
+
+        mCatData = new CategoryData("Rug", "",
+                R.drawable.rug);
+        mCatList.add(mCatData);
+        mCatData = new CategoryData("Paint", "",
+                R.drawable.paint);
+        mCatList.add(mCatData);
+        mCatData = new CategoryData("Floor", "",
+                R.drawable.floor);
+        mCatList.add(mCatData);
+//        mCatData = new CategoryData("Others", "",
+//                R.drawable.sofa);
+//        mCatList.add(mCatData);
 
         MenuAdapter myAdapter = new MenuAdapter(getActivity(), mCatList);
         mRecyclerView.setAdapter(myAdapter);

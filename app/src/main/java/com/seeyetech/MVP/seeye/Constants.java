@@ -17,6 +17,9 @@ public class Constants {
             put("table", R.drawable.tables);
             put("sofa", R.drawable.sofa);
             put("carbinet", R.drawable.cabinet);
+            put("rug", R.drawable.rug);
+            put("floor", R.drawable.floor);
+            put("paint", R.drawable.paint);
             put("others", R.drawable.sofa);
             put("saved", R.drawable.pin);
         }
