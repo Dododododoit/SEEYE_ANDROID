@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,8 +56,14 @@ public class CategoryItemAdapter extends ArrayAdapter<ProductData> implements Vi
             TextView txtDescription = (TextView) convertView.findViewById(R.id.listview_item_short_description);
             TextView txtRating = (TextView) convertView.findViewById(R.id.listview_item_rating);
             ImageView info = (ImageView) convertView.findViewById(R.id.listview_image);
+            ImageView imageButton = (ImageView)  convertView.findViewById(R.id.itemPin);
 
-
+            if(productData.getPin()==1) {
+                imageButton.setImageResource(R.drawable.pinned);
+            }
+            else {
+                imageButton.setImageResource(R.drawable.notpinned);
+            }
             txtName.setText(productData.getProductName());
             txtDescription.setText("Price: " + productData.getProductPrice() + "        " + "Rating: " + productData.getRating() + "/5");
             //txtRating.setText("Rating: " + productData.getRating() + "/5");

@@ -23,7 +23,7 @@
         android:id="@+id/item_list_fragment"
         android:layout_width="match_parent"
         app:layout_constraintBottom_toTopOf="@id/navigation"
-        android:layout_height="550sp">
+        android:layout_height="575sp">
     </fragment>
     <com.seeyetech.MVP.seeye.MovableFloatingActionButton
         android:id="@+id/fab"

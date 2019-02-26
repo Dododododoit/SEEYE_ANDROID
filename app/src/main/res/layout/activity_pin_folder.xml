@@ -13,7 +13,7 @@
         android:id="@+id/item_list_fragment"
         android:layout_width="match_parent"
         app:layout_constraintBottom_toTopOf="@id/navigation"
-        android:layout_height="550sp">
+        android:layout_height="575sp">
     </fragment>
 
     <android.support.design.widget.BottomNavigationView

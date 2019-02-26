@@ -10,7 +10,9 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +25,6 @@ import org.json.JSONObject;
 
 public class PopupActivity extends Activity {
 
-    private TextView link;
     String URL = "http://10.0.2.2:8000/lookup.php?id=";
     String URL_ALTER = "http://10.0.2.2:8000/alter.php?";
     ProductData productData;
@@ -47,16 +48,7 @@ public class PopupActivity extends Activity {
 
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        link = (TextView) findViewById(R.id.link);
-
-        link.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Uri uri = Uri.parse("https://www.macys.com/shop/product/sunset-coffee-table-quick-ship?ID=2911648&CategoryID=35423#fn=sp%3D1%26spc%3D1538%26ruleId%3D129%7CBOOST%20SAVED%20SET%7CBOOST%20ATTRIBUTE%26searchPass%3DmatchNone%2"); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-            }
-        });
-
+        setLink();
 
         Intent intent = getIntent();
         Integer productId = intent.getIntExtra("productID", 0);
@@ -85,10 +77,13 @@ public class PopupActivity extends Activity {
                                 for (int i = 0; i < jsonArray.length(); ++i) {
                                     JSONObject obj = jsonArray.getJSONObject(i);
                                     productData = new ProductData(obj);
-                                    Button button = findViewById(R.id.pinButton);
+                                    ImageButton button = (ImageButton)findViewById(R.id.pinButton);
                                     updateButton();
-                                    TextView textView = findViewById(R.id.link);
-                                    textView.setText(productData.getRating() + " out of 5");
+                                    TextView titleView = findViewById(R.id.popup_title);
+                                    titleView.setText(productData.getProductName());
+                                    RatingBar ratingBar = findViewById(R.id.rating_bar);
+                                    float ratingValue = Float.valueOf(productData.getRating());
+                                    ratingBar.setRating(ratingValue);
                                     button.setOnClickListener(new PinLisener());
                                 }
                             }
@@ -134,12 +129,47 @@ public class PopupActivity extends Activity {
 
 
     void updateButton() {
-        Button button = findViewById(R.id.pinButton);
+        ImageButton button = (ImageButton)findViewById(R.id.pinButton);
         if(productData.getPin()==1) {
-            button.setText("Remove from Pin Folder");
+            button.setImageResource(R.drawable.pinned);
         }
         else {
-            button.setText("Add to Pin Folder");
+            button.setImageResource(R.drawable.notpinned);
         }
+    }
+
+    void setLink() {
+        ImageButton imageButton = (ImageButton) findViewById(R.id.retailer_amazon);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.amazon.com"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        imageButton = (ImageButton) findViewById(R.id.retailer_target);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.target.com"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        imageButton = (ImageButton) findViewById(R.id.retailer_walmart);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.walmart.com"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 }

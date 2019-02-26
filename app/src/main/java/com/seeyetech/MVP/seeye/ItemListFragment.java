@@ -4,6 +4,7 @@ package com.seeyetech.MVP.seeye;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,6 +27,7 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,9 +64,10 @@ public class ItemListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        title = ((AppCompatActivity)getActivity())
-                .getSupportActionBar()
-                .getTitle()
+        TextView titleView = (TextView) getActivity()
+                .findViewById(R.id.actionbar_textview);
+        title = titleView
+                .getText()
                 .toString()
                 .split(" ")[0]
                 .toLowerCase();
@@ -75,9 +78,9 @@ public class ItemListFragment extends Fragment {
     public void onResume() {
         super.onResume();
         String barName = title.toLowerCase().split(" ")[0];
-        if(barName.equals("saved")) {
-            loadItems();
-        }
+        //if(barName.equals("saved")) {
+        loadItems();
+        //}
     }
 
     void loadItems() {
@@ -103,9 +106,9 @@ public class ItemListFragment extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-                LinearLayout linearLayout = (LinearLayout) view;
-                ImageView imageView = (ImageView) linearLayout.getChildAt(0);
-                LinearLayout linearLayout1 = (LinearLayout) linearLayout.getChildAt(1);
+                ConstraintLayout cLayout = (ConstraintLayout) view;
+                ImageView imageView = (ImageView) cLayout.getChildAt(0);
+                LinearLayout linearLayout1 = (LinearLayout) cLayout.getChildAt(1);
                 TextView textView = (TextView) linearLayout1.getChildAt(0);
                 //String Name = textView.getText().toString().toLowerCase().split(" ")[0];
                 Intent intent = new Intent(getActivity(), PopupActivity.class);

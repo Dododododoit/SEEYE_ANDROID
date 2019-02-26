@@ -2,11 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="0sp"
     tools:context="com.seeyetech.MVP.seeye.MenuFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
+        android:padding="0dp"
         android:layout_height="wrap_content"
         android:scrollbars="vertical" />
 
